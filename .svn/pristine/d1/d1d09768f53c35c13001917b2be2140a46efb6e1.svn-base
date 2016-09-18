@@ -1,0 +1,25 @@
+package cn.bigforce.tool.encodingconverter;
+
+import java.io.File;
+import java.io.FilenameFilter;
+
+public class MyFileNameFilter implements FilenameFilter {
+
+	String[] suffixs;
+	/**
+	 * use ';' to separate different suffix
+	 * @param suffixs
+	 */
+	public MyFileNameFilter(String suffixs) {
+		this.suffixs=suffixs.split(";");
+	}
+	@Override
+	public boolean accept(File dir, String name) {
+		for(String suffix:suffixs){
+			if(name.endsWith(suffix))
+				return true;
+		}
+		return false;
+	}
+
+}
